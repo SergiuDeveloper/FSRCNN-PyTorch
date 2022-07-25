@@ -26,11 +26,11 @@ device = torch.device("cuda", 0)
 # Turning on when the image size does not change during training can speed up training
 cudnn.benchmark = True
 # Image magnification factor
-upscale_factor = 2
+upscale_factor = 4
 # Current configuration parameter method
-mode = "train"
+mode = "valid"
 # Experiment name, easy to save weights and log files
-exp_name = "fsrcnn_x2"
+exp_name = "fsrcnn"
 
 if mode == "train":
     # Dataset
@@ -61,7 +61,7 @@ if mode == "train":
 if mode == "valid":
     # Test data address
     lr_dir = f"data/Set5/LRbicx{upscale_factor}"
-    sr_dir = f"results/test/{exp_name}"
+    sr_dir = f"results/test"
     hr_dir = f"data/Set5/GTmod12"
 
-    model_path = f"results/{exp_name}/best.pth.tar"
+    model_path = f"weights/x{upscale_factor}.tar"
