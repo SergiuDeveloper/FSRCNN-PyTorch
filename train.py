@@ -24,6 +24,8 @@ from torch.cuda import amp
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
+os.environ["MODEL_MODE"] = "train"
+
 import config
 from dataset import CUDAPrefetcher
 from dataset import TrainValidImageDataset, TestImageDataset

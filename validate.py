@@ -19,6 +19,8 @@ import numpy as np
 import torch
 from natsort import natsorted
 
+os.environ["MODEL_MODE"] = "valid"
+
 import config
 import imgproc
 from model import FSRCNN

@@ -11,6 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
+import os
+
 import random
 
 import numpy as np
@@ -28,7 +30,7 @@ cudnn.benchmark = True
 # Image magnification factor
 upscale_factor = 4
 # Current configuration parameter method
-mode = "valid"
+mode = os.environ["MODEL_MODE"]
 # Experiment name, easy to save weights and log files
 exp_name = "fsrcnn"
 
@@ -48,7 +50,7 @@ if mode == "train":
     resume = ""
 
     # Total number of epochs
-    epochs = 3000
+    epochs = 10
 
     # SGD optimizer parameter
     model_lr = 1e-3
@@ -64,4 +66,4 @@ if mode == "valid":
     sr_dir = f"results/test"
     hr_dir = f"data/Set5/GTmod12"
 
-    model_path = f"weights/x{upscale_factor}.tar"
+    model_path = f"results/fsrcnn/{upscale_factor}/last.pth.tar"
